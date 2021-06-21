@@ -1,0 +1,87 @@
+.register-form {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  display: none;
+  align-items: center;
+  padding: 40px;
+  z-index: 100;
+}
+.register {
+  transform: translateY(5%);
+  width: 500px;
+  height: 400px;
+  margin: auto;
+
+  background-color: white;
+  padding: 20px;
+  animation: reg-anime 0.3s ease-out;
+}
+.register-form form input:focus,
+.form-control:focus {
+  outline: black;
+  border: none;
+  box-shadow: inset 0 -2px 0 rgb(80, 80, 80);
+}
+.register-page {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: space-between;
+}
+.register-items {
+  cursor: pointer;
+  font-size: 19px;
+  width: 190px;
+  text-align: center;
+  margin: auto;
+}
+.register-items:hover {
+  text-decoration: underline;
+}
+.register-link {
+  text-align: center;
+}
+.register-link a {
+  color: black;
+  font-size: 18px;
+}
+.form-control {
+  margin: 10px 0;
+}
+.register-button {
+  background-color: white;
+  color: blue;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+@keyframes reg-anime {
+  from {
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    height: 400px;
+  }
+}
+.show-register {
+  display: block;
+}
+.register-close-button {
+  text-align: right;
+}
+@media (max-width: 700px) {
+  .register {
+    width: 100%;
+  }
+  .alert {
+    width: 100% !important;
+  }
+}
+
+.alert {
+  width: 500px;
+  margin: auto;
+}

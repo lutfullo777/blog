@@ -1,0 +1,20 @@
+.footer {
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 0.5px solid rgb(197, 197, 197);
+}
+.footer-link {
+  text-decoration: none;
+  color: rgb(104, 104, 104);
+}
+.footer-link h4 {
+  width: 300px;
+}
+.footer-link:hover {
+  text-decoration: none;
+  color: rgb(71, 71, 71);
+}
