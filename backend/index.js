@@ -5,7 +5,7 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const path = require('path')
 const connectDB = require('./config/mongoDB');
-
+const { errorHandler, notFound } = require('./middleware/error')
 
 
 dotenv.config()
@@ -46,6 +46,8 @@ if(process.env.NODE_ENV === 'production'){
   })
 }
 
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 
