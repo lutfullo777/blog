@@ -42,7 +42,7 @@ const PostScreen = ({ location, history }) => {
   useEffect(() => {
     dispatch(getPostById(id));
     dispatch(getComments(id));
-  }, [dispatch, id, post._id]);
+  }, [dispatch, id]);
 
   const deleteHandler = () => {
     dispatch(deletePost(id, history));
