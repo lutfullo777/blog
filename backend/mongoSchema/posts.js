@@ -22,7 +22,10 @@ const PostSchema =new mongose.Schema({
     },
     paragraph:{
         type:String
-    }
+    },
+    // text:{
+    //     type: String
+    // }
 });
 
 const Posts=mongose.model('posts',PostSchema);

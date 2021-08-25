@@ -34,7 +34,8 @@ const Post = ({ post, history }) => {
                 {post.seen}
               </li>
             </ul>
-            <p>{postParagraph}...</p>
+            <p dangerouslySetInnerHTML={{ __html: `${postParagraph}...` }}></p>
+            {/* <p>{postParagraph}...</p> */}
           </div>
           <div className="post-image">
             <img src={post.photo} alt={post.title} />

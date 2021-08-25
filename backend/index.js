@@ -30,7 +30,7 @@ app.use('/comment', require('./users/comment'))
 //admin
 app.use("/admin/users", require("./admin/users"));
 app.use('/admin/post',require('./admin/publishPost'))
-app.use('/admin/upload',require('./admin/upload'))
+// app.use('/admin/upload',require('./admin/upload'))
 
 
 const dirname = path.resolve()

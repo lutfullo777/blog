@@ -6,6 +6,7 @@ import { commentAction, getComments } from "../../action/comment";
 import Spinner from "../spinner/spinner";
 import "./postScreen.css";
 import { FaUser } from "react-icons/fa";
+
 import {
   FaTelegramPlane,
   FaClock,
@@ -112,6 +113,9 @@ const PostScreen = ({ location, history }) => {
     }
   };
 
+  // const url = window.location.href;
+  // const share = `https://t.me/share/url?url=${url}&text=${post.paragraph}`;
+
   return (
     <div style={{ minHeight: "80vh" }}>
       {loading || load ? (
@@ -124,7 +128,11 @@ const PostScreen = ({ location, history }) => {
             <div className="post-screen">
               <h1>{post.title}</h1>
               <img src={post.photo} alt="" />
-              <p>{post.paragraph}</p>
+              <p
+                dangerouslySetInnerHTML={{ __html: `${post.paragraph}` }}
+                className="post-paragraph"
+              ></p>
+              {/* <p>{post.paragraph}</p> */}
 
               <ul className="rates">
                 <li>
@@ -157,7 +165,11 @@ const PostScreen = ({ location, history }) => {
                   </li>
                 </ul>
               </div>
-
+              {/* <div className="share">
+                <a href={share} target="_blank" rel="noreferrer">
+                  Ulashish
+                </a>
+              </div> */}
               {isAdmin && (
                 <>
                   <button

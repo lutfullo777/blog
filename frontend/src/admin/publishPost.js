@@ -16,24 +16,25 @@ const PublishPost = ({history}) => {
   const dispatch = useDispatch()
 
   const [Post, setPost] = useState({});
-  const [image, setImage] = useState();
+  // const [image, setImage] = useState();
 
   const onChange = (e) => {
     setPost({ ...Post, [e.target.name]: e.target.value });
   };
 
-  const uploadFileHandler = async (e) => {
-    const file = e.target.files[0];
-    const path = file.name;
-    const formData = new FormData();
-    formData.append("image", file);
-    setImage(formData)
-    setPost({...Post, photo:path})
-  };
+  // const uploadFileHandler = async (e) => {
+  //   const file = e.target.files[0];
+  //   const path = file.name;
+  //   const formData = new FormData();
+  //   formData.append("image", file);
+  //   setImage(formData)
+  //   setPost({...Post, photo:path})
+  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(updatePost(post,image,Post,history))
+    dispatch(updatePost(post,Post,history))
+    // dispatch(updatePost(post,image,Post,history))
 
   };
 
@@ -118,7 +119,8 @@ const PublishPost = ({history}) => {
             </Form.Group>
             <Form.Group controlId="image" >
               <Form.Label>Post rasmi</Form.Label>
-              <Form.Control type="file" onChange={uploadFileHandler} name="photo" />
+              <Form.Control as="input" onChange={onChange} placeholder='URL' name="photo"   />
+              {/* <Form.Control type="file" onChange={uploadFileHandler} name="photo" /> */}
             </Form.Group>
             <button>
               Qo'shish

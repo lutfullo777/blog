@@ -76,7 +76,8 @@ export const createPost = () => async (dispatch) => {
   }
 };
 
-export const updatePost = (post, image, Post, history) => async (dispatch) => {
+// export const updatePost = (post, image, Post, history) => async (dispatch) => {
+export const updatePost = (post, Post, history) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_POST_REQUEST });
 
@@ -93,20 +94,20 @@ export const updatePost = (post, image, Post, history) => async (dispatch) => {
         },
       };
 
-      const config1 = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      await axios.post(`/admin/upload/${post._id}`, image, config1).then(
-        () => {
-          // console.log('rasm joylandi');
-        },
-        () => {
-          // console.log('rasm joylanmadi');
-        }
-      );
+      // const config1 = {
+      //   headers: {
+      //     "Content-Type": "multipart/form-data",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // };
+      // await axios.post(`/admin/upload/${post._id}`, image, config1).then(
+      //   () => {
+      //     // console.log('rasm joylandi');
+      //   },
+      //   () => {
+      //     // console.log('rasm joylanmadi');
+      //   }
+      // );
 
       await axios.put(`/admin/post/${post._id}`, Post, config).then(
         (res) => {
@@ -176,7 +177,7 @@ export const editPost = (post, id, history) => async (dispatch) => {
         },
       };
 
-      const { data } = await axios.put(`/admin/post/edit/${id}`, config);
+      const { data } = await axios.put(`/admin/post/edit/${id}`,post, config);
 
       history.goBack(-1);
 

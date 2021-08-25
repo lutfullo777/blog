@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../mongoSchema/posts')
 const {auth, admin} = require('../middleware/auth')
-const fs = require('fs')
-const { promisify } =require('util')
+// const fs = require('fs')
+// const { promisify } =require('util')
 const moment = require('moment')
+const parser = require('html-react-parser')
 
-const unlinkAsync = promisify(fs.unlink)
+// const unlinkAsync = promisify(fs.unlink)
 
 
   
@@ -22,6 +23,7 @@ router.post('/', auth, admin, async(req,res)=>{
             seen: 0,
             date: moment().utcOffset("+05:00").format('DD.MM.YYYY HH:mm'),
             paragraph,
+            // text:'',
             photo:'/uploads\\image.jpg'
         });
         res.status(201).json({msg: 'Post qo\'shish',post})
@@ -35,14 +37,16 @@ router.put('/:id',auth,admin,async (req, res) => {
     try{
         const post = await Post.findById(req.params.id);
     if(post){
-        const pathLen = req.body.photo.length
-        const originalname = req.body.photo.slice(pathLen-3, pathLen);
-        let photoName;
-        originalname === 'peg' ? photoName = 'jpeg' : photoName = originalname;
+        // const pathLen = req.body.photo.length
+        // const originalname = req.body.photo.slice(pathLen-3, pathLen);
+        // let photoName;
+        // originalname === 'peg' ? photoName = 'jpeg' : photoName = originalname;
         post.title=req.body.title;
         post.paragraph=req.body.paragraph;
         req.body.date ? post.date = req.body.date : post.date = moment().utcOffset("+05:00").format('DD.MM.YYYY HH:mm')
-        post.photo = `/uploads\\${req.params.id}.${photoName}`
+        // post.photo = `/uploads\\${req.params.id}.${photoName}`
+        post.photo = req.body.photo;
+        // post.text = parser( req.body.paragraph )
         await post.save();
         res.status(201).json({msg: "Post muvaffaqiyatli yuklandi"})
     }else{
@@ -60,11 +64,11 @@ router.delete('/:id',auth,admin, async (req, res) => {
 
         const post = await Post.findByIdAndDelete(req.params.id);
  
-        const photo = post.photo.split('\\')[1]
+        // const photo = post.photo.split('\\')[1]
       
-        if(photo !== 'image.jpg'){
-            await unlinkAsync(`../Blog/uploads/${photo}`)
-        }
+        // if(photo !== 'image.jpg'){
+        //     await unlinkAsync(`../Blog/uploads/${photo}`)
+        // }
         
         res.status(200).json({msg: 'Post o\'chirildi'});
 

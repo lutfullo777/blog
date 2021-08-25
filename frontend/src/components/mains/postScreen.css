@@ -5,6 +5,7 @@
 .post-screen img {
   width: 100%;
   padding: 10px 30px;
+  display: block;
 }
 .post-screen p {
   font-size: 1.1em;
@@ -198,5 +199,6 @@ button:active {
   }
   .post-screen img {
     width: 80%;
+    margin: auto;
   }
 }

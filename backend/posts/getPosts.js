@@ -5,16 +5,17 @@ const fs = require('fs')
 
 
 
+
 router.route('/').get(async (req,res)=>{
     let posts = await postsData.find()
     posts = posts.reverse()
-    posts.map(post => {
-        const photo = post.photo.split('\\');
+    // posts.map(post => {
+    //     const photo = post.photo.split('\\');
 
-        if(!fs.existsSync(`uploads/${photo[1]}`)){
-        post.photo = '/image.jpg'
-    }
-    })
+    //     if(!fs.existsSync(`uploads/${photo[1]}`)){
+    //     post.photo = '/image.jpg'
+    // }
+    // })
     
     res.json({posts})
 })
